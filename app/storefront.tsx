@@ -21,7 +21,7 @@ export default function Storefront() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("/api/products").then((r) => r.json()).then((data) => setProducts(data.products ?? [])).finally(() => setLoading(false));
+    fetch("/api/products").then((r) => r.json() as Promise<{ products?: Product[] }>).then((data) => setProducts(data.products ?? [])).finally(() => setLoading(false));
     try { setCart(JSON.parse(localStorage.getItem("mth-cart") || "{}")); } catch {}
   }, []);
   useEffect(() => { localStorage.setItem("mth-cart", JSON.stringify(cart)); }, [cart]);

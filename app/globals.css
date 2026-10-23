@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&display=swap');
 @import "tailwindcss";
 @import "../vendor/shadcn-tailwind-4.13.0.css";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&display=swap');
 
 :root{--blue:#0710b8;--deep:#030878;--green:#65ff00;--ink:#111735;--muted:#66708d;--ice:#f3f5ff;--line:#dce1f3;--white:#fff;--radius:22px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-weight:500}button,input,textarea{font:inherit}button,a{touch-action:manipulation}a{text-decoration:none;color:inherit}.kicker{font-size:.72rem;letter-spacing:.18em;font-weight:800;color:var(--blue);margin:0 0 12px}

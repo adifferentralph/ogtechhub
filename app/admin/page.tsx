@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { ArrowLeft, Eye, EyeOff, LoaderCircle, LogOut, PackagePlus, Save, Trash2 } from "lucide-react";
 
 type Product = { id:number; name:string; category:string; description:string; price:number; imageUrl:string|null; emoji:string; inStock:boolean };
+type ApiResult = { products?: Product[]; product?: Product; error?: string; ok?: boolean };
 
 export default function AdminPage() {
   const [key, setKey] = useState("");
@@ -15,7 +16,7 @@ export default function AdminPage() {
 
   async function load() {
     const response = await fetch("/api/products");
-    const data = await response.json();
+    const data = await response.json() as ApiResult;
     setProducts(data.products ?? []);
   }
   useEffect(() => { load(); const saved = sessionStorage.getItem("mth-admin"); if (saved) setKey(saved); }, []);
@@ -32,7 +33,7 @@ export default function AdminPage() {
   async function addProduct(form: FormData) {
     setBusy(true); setMessage("");
     const response = await fetch("/api/products", { method:"POST", headers:{"x-admin-key":key}, body:form });
-    const data = await response.json();
+    const data = await response.json() as ApiResult;
     if (!response.ok) setMessage(data.error || "Could not add product");
     else { setMessage("Product published successfully."); (document.getElementById("product-form") as HTMLFormElement)?.reset(); await load(); }
     setBusy(false);
@@ -40,7 +41,7 @@ export default function AdminPage() {
   async function update(product: Product, changes: Partial<Product>) {
     setBusy(true); setMessage("");
     const response = await fetch("/api/products", { method:"PATCH", headers:{"content-type":"application/json","x-admin-key":key}, body:JSON.stringify({id:product.id,...changes}) });
-    const data = await response.json();
+    const data = await response.json() as ApiResult;
     if (!response.ok) setMessage(data.error || "Could not update product"); else { setMessage("Product updated."); await load(); }
     setBusy(false);
   }
@@ -48,7 +49,7 @@ export default function AdminPage() {
     if (!window.confirm(`Delete ${product.name}? This cannot be undone.`)) return;
     setBusy(true); setMessage("");
     const response = await fetch(`/api/products?id=${product.id}`, { method:"DELETE", headers:{"x-admin-key":key} });
-    const data = await response.json();
+    const data = await response.json() as ApiResult;
     if (!response.ok) setMessage(data.error || "Could not delete product"); else { setMessage("Product deleted."); await load(); }
     setBusy(false);
   }
