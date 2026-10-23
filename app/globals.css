@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&display=swap');
-@import "tailwindcss";
-@import "../vendor/shadcn-tailwind-4.13.0.css";
-
 :root{--navy:#05174f;--blue:#0710b8;--bright:#2368e8;--green:#65ff00;--ink:#10162f;--muted:#69718a;--bg:#f5f7fb;--line:#e1e5ef;--white:#fff;--orange:#ff641e}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-weight:500}button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}a{text-decoration:none;color:inherit}img{max-width:100%}
 .top-strip{height:30px;background:#1763d8;color:#fff;display:grid;place-items:center;font-size:.69rem;font-weight:700}
