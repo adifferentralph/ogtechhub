@@ -32,6 +32,7 @@ yarn-error.log*
 .dev.vars*
 *.pem
 /.npm-cache/
+/.vercel-api-hold/
 
 # Checkout-local tool state
 /.wrangler/

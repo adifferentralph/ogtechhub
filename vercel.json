@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "node scripts/vercel-build.mjs",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://mayor-tech-hub-store.chinelo-nnazor.chatgpt.site/api/:path*"
+    }
+  ]
+}
